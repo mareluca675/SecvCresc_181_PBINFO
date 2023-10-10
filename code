@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long long v[10001], i, n, st, dr, stsecvmax, drsecvmax, secvmax = 0;
+
+int main()
+{
+    
+    ifstream fin("secvcresc.in");
+    ofstream fout("secvcresc.out");
+    
+    fin >> n;
+    
+    for(i = 1; i <= n; i++)
+    {
+        fin >> v[i];
+    }
+    
+    for(i = 1; i <= n; i++)
+    {
+        st = i;
+        
+        while(v[i] < v[i + 1] and i + 1 <= n)
+        {
+            i ++;
+            dr = i;
+        }
+        
+        if(secvmax < dr - st + 1)
+        {
+            secvmax = dr - st + 1;
+            drsecvmax = dr;
+            stsecvmax = st;
+        }
+    }
+    
+    fout << stsecvmax << " " << drsecvmax;
+
+}
